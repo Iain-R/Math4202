@@ -66,8 +66,8 @@ def messageCB(m, where):
                             print ('Update error', s1, s2, upto)
                     if Val[upto] !=-k-1:
                         nAdded += 1
-                        m.cbLazy(quicksum(X[tList[i-1],tList[i],k] for i in range(len(tList)))\
-                                          <= len(tList)-1)
+                        
+                        m.cbLazy(quicksum(X[tList[i-1],tList[i],k] for i in range(len(tList)))<= len(tList)-1)
                         break
         ## Count the solutions                    
         if nAdded == 0:

@@ -38,11 +38,9 @@ def Neighbour(i,j): #This is just a useful function we use all the time
 
 Count = 0
 def Callback(model,where):
-		''' This Callback Function specifically looks for cycles but thats like 99% of what we do with lazy constraints'''
-
-	if where == GRB.Callback.MESSAGE:
-		pass 
-	# print(Count)
+	# if where == GRB.Callback.MESSAGE:
+	# 	pass 
+	# # print(Count)
 	if where==GRB.Callback.MIPSOL:
 		nadded = 0 
 		XD = {(s1,s2,k): m.cbGetSolution(X[s1,s2,k]) for (s1,s2,k) in X} #Retrieve Values in Solution 
@@ -59,12 +57,12 @@ def Callback(model,where):
 								Upto = s #update 
 								Flagg = True #Path continues 
 								break # Go To Line 69 
-								if not Flagg: #Path does not continue, yet is not at an end 
-									print('Incomplete Solution') # Should never get here 
-									if Val[Upto[0],Upto[1]] != -k-1:
-										nadded+=1
-										m.cbLazy(quicksum(X[tList[i-1],tList[i],k] for i in range(len(tList)))<=len(tList)-1) #This is just a panic constrant 
-										break
+						if not Flagg: #Path does not continue, yet is not at an end 
+							print('Incomplete Solution') # Should never get here 
+					if Val[Upto[0],Upto[1]] != -k-1:
+						nadded+=1
+						m.cbLazy(quicksum(X[tList[i-1],tList[i],k] for i in range(len(tList)))<=len(tList)-1) #This is just a panic constrant 
+						break
 
 		if nadded ==0: # If we have never had to panic constraint 
 			print('Solution') 
@@ -77,7 +75,6 @@ def Callback(model,where):
 							for k in K:
 								if ((n1,n2),s2,k) in X and XD[(n1,n2),s2,k] > 0.1: # if we go from previos to s with k 
 									break #Pretty much if its a blankboi and we use it break 
-									print (strAns)
 			tList = [X[s1,s2,k] for (s1,s2,k) in X if XD[s1,s2,k] > 0.1]
 			m.cbLazy(quicksum(tList) <= len(tList)-1) # Reduvce solution space by one 
 
