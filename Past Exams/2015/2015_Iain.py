@@ -77,18 +77,18 @@ def Callback(model,where):
         XD = GetValues1(model,X)
             #print(XD)
             # For each starting square, look for cycles
-        for k in XD: 
-            Start = k[0]
+        for k in XD: #For Movement (s1,s2) ==  k
+            Start = k[0] 
             tList = [Start]
             Upto = k[1]
-            while Upto!=Start:
-                tList.append(Upto)
+            while Upto!=Start: 
+                tList.append(Upto) #Include current node in list 
                     # We move one or zero (end of chain) squares
-                NextMoves = [k for k in XD if k[0]==Upto]
-                if len(NextMoves)==0:
+                NextMoves = [k for k in XD if k[0]==Upto] #Potential moces that start where we are up to(continue the path )
+                if len(NextMoves)==0: #If this is empty we are done 
                     break
                 else:
-                    Upto = NextMoves[0][1]
+                    Upto = NextMoves[0][1] # if we have next moves just check the first one
                 # If we got back to the start we have a cycle
             if Upto==Start:
                     # Cycle - need to add lazy constraint
