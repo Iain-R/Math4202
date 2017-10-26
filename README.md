@@ -1,6 +1,6 @@
 # Math4202
 Problems and practice work for Math4202 
-
+ 
 
 If You are reading this in the exam then good luck
 
@@ -12,10 +12,13 @@ If You are reading this in the exam then good luck
 - 2014 Official Solution 
 - 2014 Iain Solution
 - 2015 Official Solution 
+- 2015 Iain Solution
 - 2016 Official Solution 
 
 ## Templates 
 - Column Generation Template ( for sequence Problems ) 
 - Flow Template ( Network Flow Problems ) 
 - Lazy Constraints Template ( Lazy Constraint explanations )
+
+_*~By Iain~*_
 
